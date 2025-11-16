@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
@@ -22,7 +19,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 intermMove = mainCamera.transform.right * axis.x + mainCamera.transform.forward * axis.y;
         Vector3 finalMove = new Vector3(intermMove.x, 0, intermMove.z).normalized * speed;
-        Debug.Log(finalMove);
-        rb.velocity = finalMove;
+        rb.velocity = new Vector3(Mathf.Abs(finalMove.x) > Mathf.Abs(rb.velocity.x) ? finalMove.x : rb.velocity.x,
+                                  rb.velocity.y,
+                                  Mathf.Abs(finalMove.z) > Mathf.Abs(rb.velocity.z) ? finalMove.z : rb.velocity.z);
+        // rb.AddForce(finalMove);
     }
 }
