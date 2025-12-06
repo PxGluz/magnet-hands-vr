@@ -8,6 +8,8 @@ public class MagneticInputLogic : MonoBehaviour
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     [SerializeField] private LayerMask magnetismRaycast;
+    [SerializeField] private LineRenderer leftHandTrajectory;
+    [SerializeField] private LineRenderer rightHandTrajectory;
 
     [Header("Variables")]
     [SerializeField] private float offset;
@@ -30,6 +32,7 @@ public class MagneticInputLogic : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         SteamVR_Actions._default.Negative.onChange += NegativeLogic;
         SteamVR_Actions._default.Positive.onChange += PositiveLogic;
+        SteamVR_Actions._default.Trajectory.onChange += EnableTrajectory;
     }
 
     private GameObject heldLeft;
@@ -132,6 +135,14 @@ public class MagneticInputLogic : MonoBehaviour
     private void PositiveLogic(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
     {
         HandleMagnetism(fromAction.activeDevice, newState, MagnetismType.Positive);
+    }
+
+    private void EnableTrajectory(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
+    {
+        if (fromAction.activeDevice == SteamVR_Input_Sources.LeftHand)
+            leftHandTrajectory.gameObject.SetActive(newState);
+        else
+            rightHandTrajectory.gameObject.SetActive(newState);
     }
 
 
