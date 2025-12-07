@@ -5,28 +5,39 @@ using UnityEngine;
 public class ButtonActionedDoor : MonoBehaviour
 {
     [Header("Open animation")]
+    [Tooltip("Offset from door position")]
     [SerializeField] private Vector3 openDestination;
     [SerializeField] private float openTime;
     [Header("References")]
-    [SerializeField] private ButtonLogic linkedButton;
+    [SerializeField] private List<ButtonLogic> linkedButtons;
     [SerializeField] private Collider doorCollider;
 
     private bool isOpened = false;
+    private int pressedButtons = 0;
     private Vector3 velocity = Vector3.zero;
+
+    private Vector3 destination;
     void Start()
     {
-        linkedButton.onPress.AddListener(BeginOpeningDoor);
+        destination = transform.position + openDestination;
+
+        foreach (ButtonLogic button in linkedButtons)
+            button.onPress.AddListener(ButtonPressed);
     }
 
     void Update()
     {
         if (isOpened)
-            transform.position = Vector3.SmoothDamp(transform.position, openDestination, ref velocity, openTime);
+            transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, openTime);
     }
 
-    private void BeginOpeningDoor()
+    private void ButtonPressed()
     {
-        isOpened = true;
-        doorCollider.enabled = false;
+        pressedButtons++;
+        if (pressedButtons >= linkedButtons.Count)
+        {
+            isOpened = true;
+            doorCollider.enabled = false;
+        }
     }
 }
