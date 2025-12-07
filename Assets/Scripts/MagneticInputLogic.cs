@@ -69,11 +69,13 @@ public class MagneticInputLogic : MonoBehaviour
             }
 
             RaycastHit hit;
-            if (Physics.SphereCast(source.position, magnetismSphereRadius, source.forward, out hit, magnetismRange, magnetismRaycast))
+            if (Physics.SphereCast(source.position, magnetismSphereRadius, source.forward, out hit, magnetismRange))
             {
+                if (!Helpers.isLayerInMask(hit.collider.gameObject.layer, magnetismRaycast))
+                    return;
                 GameObject hitObject = hit.collider.gameObject;
                 MagneticObject magneticObject = hitObject.GetComponent<MagneticObject>();
-                Vector3 directionToObject = (hitObject.transform.position - source.position).normalized;
+                Vector3 directionToObject = (hit.point - source.position).normalized;
                 if (magneticObject.isPullable)
                 {
                     if (magneticObject.magneticPole != magnetismType)
