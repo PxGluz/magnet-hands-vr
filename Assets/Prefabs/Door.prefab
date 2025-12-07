@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbc88fb7f6c1ce488d6f2a5c3bc3c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openDestination: {x: 3, y: -2.5, z: 0}
+  openDestination: {x: 0, y: -5, z: 0}
   openTime: 1
-  linkedButton: {fileID: 0}
+  linkedButtons: []
   doorCollider: {fileID: 7038922318301929329}
