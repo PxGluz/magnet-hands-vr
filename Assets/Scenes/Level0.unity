@@ -494,6 +494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pullable (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7051320246586144279, guid: e92e2471bc5b52c40881abc1bbc27cf6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
     - target: {fileID: 7374496684304248617, guid: e92e2471bc5b52c40881abc1bbc27cf6, type: 3}
       propertyPath: magneticPole
       value: 0
@@ -560,6 +564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagneticGrapple (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6653012598736569250, guid: d4e3f20db3779bd46b4ca8c1f5b2463a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
     - target: {fileID: 8600910962022557417, guid: d4e3f20db3779bd46b4ca8c1f5b2463a, type: 3}
       propertyPath: magneticPole
       value: 0
@@ -1078,6 +1086,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6810700252943723790, guid: aa0e9a657a61fc44d98a263f2a59efad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

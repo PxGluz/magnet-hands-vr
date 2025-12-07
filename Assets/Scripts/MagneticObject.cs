@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[ExecuteAlways]
 public class MagneticObject : MonoBehaviour
 {
     [SerializeField] private Material positiveColor;
@@ -10,6 +11,12 @@ public class MagneticObject : MonoBehaviour
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
+
+    void OnValidate()
+    {
+        GetComponent<MeshRenderer>().material = magneticPole == MagneticInputLogic.MagnetismType.Negative ? negativeColor : positiveColor;
+    }
+
     public void RespawnItem()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
