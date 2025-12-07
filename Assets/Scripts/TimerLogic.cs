@@ -34,6 +34,15 @@ public class TimerLogic : MonoBehaviour
             timerObject.color = stoppedColor;
     }
 
+    public void InitTimerObject(TextMeshProUGUI timerObject)
+    {
+        timerObject.color = isRunning ? runningColor : stoppedColor;
+        timerObject.text = string.Format("{0:D2}:{1:D2}",
+            Mathf.FloorToInt(timer / 60),
+            Mathf.FloorToInt(timer % 60));
+        AddTimerObject(timerObject);
+    }
+
     private void UpdateTimers()
     {
         if (!isRunning) return;

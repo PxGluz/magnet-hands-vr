@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class TimerObject : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class TimerObject : MonoBehaviour
 
     void Start()
     {
-        PlayerContainer.Instance.timerLogic.AddTimerObject(timerText);
+        PlayerContainer.Instance.timerLogic.InitTimerObject(timerText);
         if (shouldRotateToPlayer)
             target = Camera.main.transform;
     }
