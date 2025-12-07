@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[ExecuteAlways]
 public class ButtonActionedDoor : MonoBehaviour
 {
     [Header("Open animation")]
@@ -18,6 +18,28 @@ public class ButtonActionedDoor : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     private Vector3 destination;
+
+    void OnValidate()
+    {
+        if (linkedButtons.Count > 1)
+        {
+            doorText.gameObject.SetActive(true);
+            doorText.text = linkedButtons.Count.ToString();
+        }
+        else
+            doorText.gameObject.SetActive(false);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        foreach (ButtonLogic button in linkedButtons)
+        {
+            if (button != null)
+                Gizmos.DrawLine(transform.position, button.transform.position);
+        }
+    }
+
     void Start()
     {
         destination = transform.position + openDestination;
