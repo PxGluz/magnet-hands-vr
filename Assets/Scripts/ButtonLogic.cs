@@ -10,6 +10,7 @@ public class ButtonLogic : MonoBehaviour
     [SerializeField] private int itemCount;
     [Tooltip("What layers to consider for items")]
     [SerializeField] private LayerMask relevantLayers;
+    [SerializeField] private bool useScale = true;
 
     [Header("Check area config")]
     [Tooltip("Offset from button position")]
@@ -17,10 +18,9 @@ public class ButtonLogic : MonoBehaviour
     [SerializeField] private Vector3 boxSizeHalfs;
 
     [Header("Press animation config")]
-    [SerializeField] private float moveAmount;
-    [SerializeField] private Vector3 moveDirection;
+    [SerializeField] private Transform animatedObject;
 
-    public UnityEvent onPress;
+    [HideInInspector] public UnityEvent onPress;
     private bool hasBeenPressed;
 
     private void OnEnable()
@@ -39,7 +39,10 @@ public class ButtonLogic : MonoBehaviour
         if (hasBeenPressed)
             return;
 
-        Collider[] pressingColliders = Physics.OverlapBox(transform.position + boxCenter, boxSizeHalfs, transform.rotation, relevantLayers);
+        Vector3 scaledBoxSizes = useScale ? new Vector3(boxSizeHalfs.x * transform.localScale.x, boxSizeHalfs.y * transform.localScale.y, boxSizeHalfs.z * transform.localScale.z) : boxSizeHalfs;
+        Vector3 scaledBoxCenter = useScale ? new Vector3(boxCenter.x * transform.localScale.x, boxCenter.y * transform.localScale.y, boxCenter.z * transform.localScale.z) : boxCenter;
+
+        Collider[] pressingColliders = Physics.OverlapBox(transform.position + scaledBoxCenter, scaledBoxSizes, transform.rotation, relevantLayers);
         if (pressingColliders.Length >= itemCount)
         {
             print("Button has been pressed");
@@ -51,11 +54,11 @@ public class ButtonLogic : MonoBehaviour
 
     private IEnumerator PressAnimation()
     {
-        float step = moveAmount / 30f;
+        float step = animatedObject.transform.localScale.y / 30f;
         // 30 frames for now
         for (int i = 0; i < 30; i++)
         {
-            transform.position += moveDirection * step;
+            animatedObject.transform.localScale = new Vector3(animatedObject.transform.localScale.x, animatedObject.transform.localScale.y - step, animatedObject.transform.localScale.z);
             yield return null;
         }
     }
@@ -63,6 +66,10 @@ public class ButtonLogic : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + boxCenter, boxSizeHalfs * 2);
+
+        Vector3 scaledBoxSizes = useScale ? new Vector3(boxSizeHalfs.x * transform.localScale.x, boxSizeHalfs.y * transform.localScale.y, boxSizeHalfs.z * transform.localScale.z) * 2 : boxSizeHalfs * 2;
+        Vector3 scaledBoxCenter = useScale ? new Vector3(boxCenter.x * transform.localScale.x, boxCenter.y * transform.localScale.y, boxCenter.z * transform.localScale.z) : boxCenter;
+
+        Gizmos.DrawWireCube(transform.position + scaledBoxCenter, scaledBoxSizes);
     }
 }

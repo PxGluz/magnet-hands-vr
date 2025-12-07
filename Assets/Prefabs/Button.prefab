@@ -110,7 +110,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.447}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6412119492666640734}
@@ -133,10 +133,10 @@ MonoBehaviour:
   relevantLayers:
     serializedVersion: 2
     m_Bits: 64
+  useScale: 1
   boxCenter: {x: 0, y: 0.12, z: 0}
-  boxSizeHalfs: {x: 0.15, y: 0.15, z: 0.15}
-  moveAmount: 0.1
-  moveDirection: {x: 0, y: -1, z: 0}
+  boxSizeHalfs: {x: 0.6, y: 0.6, z: 0.6}
+  animatedObject: {fileID: 8341014405358551177}
   onPress:
     m_PersistentCalls:
       m_Calls: []
