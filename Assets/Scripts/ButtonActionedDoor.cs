@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ButtonActionedDoor : MonoBehaviour
@@ -10,7 +11,7 @@ public class ButtonActionedDoor : MonoBehaviour
     [SerializeField] private float openTime;
     [Header("References")]
     [SerializeField] private List<ButtonLogic> linkedButtons;
-    [SerializeField] private Collider doorCollider;
+    [SerializeField] private TextMeshProUGUI doorText;
 
     private bool isOpened = false;
     private int pressedButtons = 0;
@@ -23,6 +24,14 @@ public class ButtonActionedDoor : MonoBehaviour
 
         foreach (ButtonLogic button in linkedButtons)
             button.onPress.AddListener(ButtonPressed);
+        
+        if (linkedButtons.Count > 1)
+        {
+            doorText.gameObject.SetActive(true);
+            doorText.text = linkedButtons.Count.ToString();
+        }
+        else
+            doorText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -34,10 +43,11 @@ public class ButtonActionedDoor : MonoBehaviour
     private void ButtonPressed()
     {
         pressedButtons++;
+        doorText.text = (linkedButtons.Count - pressedButtons).ToString();
         if (pressedButtons >= linkedButtons.Count)
         {
             isOpened = true;
-            doorCollider.enabled = false;
+            doorText.gameObject.SetActive(false);
         }
     }
 }
