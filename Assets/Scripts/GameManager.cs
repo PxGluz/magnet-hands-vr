@@ -1,3 +1,4 @@
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Level Failed!");
         PlayerContainer.Instance.transform.position = playerCheckpoint;
+        PlayerContainer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     public void SetPlayerCheckpoint(Vector3 position)

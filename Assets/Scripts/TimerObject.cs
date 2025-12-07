@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 public class TimerObject : MonoBehaviour
 {
