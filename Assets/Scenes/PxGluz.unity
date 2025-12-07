@@ -486,6 +486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09cc31e859abbf4398c556d4e6917e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positiveColor: {fileID: 2100000, guid: ab74ba228741a794aa140fb95f2dea33, type: 2}
+  negativeColor: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
   isPullable: 0
   magneticPole: 1
 --- !u!65 &901657354
@@ -607,6 +609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09cc31e859abbf4398c556d4e6917e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positiveColor: {fileID: 2100000, guid: ab74ba228741a794aa140fb95f2dea33, type: 2}
+  negativeColor: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
   isPullable: 1
   magneticPole: 0
 --- !u!65 &925283881
@@ -754,6 +758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09cc31e859abbf4398c556d4e6917e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positiveColor: {fileID: 2100000, guid: ab74ba228741a794aa140fb95f2dea33, type: 2}
+  negativeColor: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
   isPullable: 0
   magneticPole: 1
 --- !u!65 &992344371
@@ -1369,6 +1375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09cc31e859abbf4398c556d4e6917e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positiveColor: {fileID: 2100000, guid: ab74ba228741a794aa140fb95f2dea33, type: 2}
+  negativeColor: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
   isPullable: 1
   magneticPole: 1
 --- !u!54 &1813953540
@@ -1781,6 +1789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09cc31e859abbf4398c556d4e6917e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positiveColor: {fileID: 2100000, guid: ab74ba228741a794aa140fb95f2dea33, type: 2}
+  negativeColor: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
   isPullable: 0
   magneticPole: 0
 --- !u!1001 &2875989766223463654

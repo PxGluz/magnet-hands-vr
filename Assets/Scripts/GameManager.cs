@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted()
     {
         PlayerContainer.Instance.timerLogic.StopTimer();
+        SetPlayerCheckpoint(PlayerContainer.Instance.transform.position);
         Debug.Log("Level Completed!");
     }
 
