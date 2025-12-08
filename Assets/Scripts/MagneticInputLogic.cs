@@ -8,6 +8,7 @@ public class MagneticInputLogic : MonoBehaviour
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     [SerializeField] private LayerMask magnetismRaycast;
+    [SerializeField] private LayerMask sphereCastLayers;
     [SerializeField] private LineRenderer leftHandTrajectory;
     [SerializeField] private LineRenderer rightHandTrajectory;
 
@@ -69,7 +70,7 @@ public class MagneticInputLogic : MonoBehaviour
             }
 
             RaycastHit hit;
-            if (Physics.SphereCast(source.position, magnetismSphereRadius, source.forward, out hit, magnetismRange))
+            if (Physics.SphereCast(source.position, magnetismSphereRadius, source.forward, out hit, magnetismRange, magnetismRaycast))
             {
                 if (!Helpers.isLayerInMask(hit.collider.gameObject.layer, magnetismRaycast))
                     return;

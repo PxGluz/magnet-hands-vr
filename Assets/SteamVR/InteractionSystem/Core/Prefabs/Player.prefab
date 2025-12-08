@@ -385,6 +385,9 @@ MonoBehaviour:
   magnetismRaycast:
     serializedVersion: 2
     m_Bits: 64
+  sphereCastLayers:
+    serializedVersion: 2
+    m_Bits: 119
   leftHandTrajectory: {fileID: 6857450808203676943}
   rightHandTrajectory: {fileID: 7248943671503246792}
   offset: 0.3
