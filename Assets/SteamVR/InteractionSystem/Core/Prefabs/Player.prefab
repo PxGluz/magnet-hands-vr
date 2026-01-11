@@ -390,6 +390,8 @@ MonoBehaviour:
     m_Bits: 119
   leftHandTrajectory: {fileID: 6857450808203676943}
   rightHandTrajectory: {fileID: 7248943671503246792}
+  positiveColor: {fileID: 2100000, guid: ab74ba228741a794aa140fb95f2dea33, type: 2}
+  negativeColor: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
   offset: 0.3
   magnetismRange: 15
   magnetismSphereRadius: 0.5
