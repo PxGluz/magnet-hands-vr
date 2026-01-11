@@ -1,5 +1,6 @@
 using UnityEngine;
 using Valve.VR;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,5 +24,11 @@ public class PlayerMovement : MonoBehaviour
                                   rb.velocity.y,
                                   Mathf.Abs(finalMove.z) > Mathf.Abs(rb.velocity.z) ? finalMove.z : rb.velocity.z);
         // rb.AddForce(finalMove);
+    }
+
+    private void Update()
+    {
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % 2);
     }
 }

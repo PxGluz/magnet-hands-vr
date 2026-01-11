@@ -18,9 +18,4 @@ public class PlayerContainer : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
-    private void Start()
-    {
-        GameManager.instance.SetPlayerCheckpoint(transform.position);
-    }
 }

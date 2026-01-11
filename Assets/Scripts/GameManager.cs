@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private Vector3 playerCheckpoint;
 
+    public Transform startPosition;
+
     public void LevelCompleted()
     {
         PlayerContainer.Instance.timerLogic.StopTimer();
@@ -12,9 +14,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Level Completed!");
     }
 
-    public void LevelFailed()
+    public void ResetPlayer()
     {
-        Debug.Log("Level Failed!");
+        //Debug.Log("Level Failed!");
         PlayerContainer.Instance.transform.position = playerCheckpoint;
         PlayerContainer.Instance.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
@@ -30,5 +32,11 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        SetPlayerCheckpoint(startPosition.position);
+        ResetPlayer();
     }
 }

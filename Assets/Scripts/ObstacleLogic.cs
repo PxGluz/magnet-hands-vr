@@ -5,7 +5,7 @@ public class ObstacleLogic : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-            GameManager.instance.LevelFailed();
+            GameManager.instance.ResetPlayer();
         if (collision.gameObject.layer == LayerMask.NameToLayer("Magnetic"))
         {
             MagneticObject magObj = collision.gameObject.GetComponent<MagneticObject>();
