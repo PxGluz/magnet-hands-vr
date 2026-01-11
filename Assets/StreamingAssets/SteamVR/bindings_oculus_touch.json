@@ -214,7 +214,38 @@
                   "overlap_pct" : "30",
                   "sub_mode" : "touch"
                },
+               "path" : "/user/hand/left/input/joystick"
+            },
+            {
+               "inputs" : {
+                  "north" : {
+                     "output" : "/actions/default/in/teleport"
+                  }
+               },
+               "mode" : "dpad",
+               "parameters" : {
+                  "deadzone_pct" : "25",
+                  "overlap_pct" : "30",
+                  "sub_mode" : "touch"
+               },
                "path" : "/user/hand/right/input/joystick"
+            },
+            {
+               "inputs" : {
+                  "east" : {
+                     "output" : "/actions/default/in/snapturnright"
+                  },
+                  "west" : {
+                     "output" : "/actions/default/in/snapturnleft"
+                  }
+               },
+               "mode" : "dpad",
+               "parameters" : {
+                  "deadzone_pct" : "85",
+                  "overlap_pct" : "0",
+                  "sub_mode" : "touch"
+               },
+               "path" : "/user/hand/left/input/joystick"
             },
             {
                "inputs" : {
@@ -319,7 +350,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/trajectory"
+                     "output" : "/actions/default/in/openmenu"
                   }
                },
                "mode" : "button",
@@ -329,7 +360,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/trajectory"
+                     "output" : "/actions/default/in/openmenu"
                   }
                },
                "mode" : "button",

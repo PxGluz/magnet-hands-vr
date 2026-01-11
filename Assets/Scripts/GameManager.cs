@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Valve.VR;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,6 +8,16 @@ public class GameManager : MonoBehaviour
     private Vector3 playerCheckpoint;
 
     public Transform startPosition;
+
+    private void OnEnable()
+    {
+        SteamVR_Actions._default.OpenMenu.onChange += BackToMenu;
+    }
+
+    private void OnDisable()
+    {
+        SteamVR_Actions._default.OpenMenu.onChange -= BackToMenu;
+    }
 
     public void LevelCompleted()
     {
@@ -38,5 +50,12 @@ public class GameManager : MonoBehaviour
     {
         SetPlayerCheckpoint(startPosition.position);
         ResetPlayer();
+    }
+
+    private void BackToMenu(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
+    {
+        Destroy(PlayerContainer.Instance.gameObject);
+
+        SceneManager.LoadScene(0);
     }
 }
