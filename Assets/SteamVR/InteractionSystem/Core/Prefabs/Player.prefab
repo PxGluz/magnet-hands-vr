@@ -394,7 +394,7 @@ MonoBehaviour:
   negativeColor: {fileID: 2100000, guid: 27e976b9b9f5a914f902d42c6df1da43, type: 2}
   offset: 0.3
   magnetismRange: 15
-  magnetismSphereRadius: 0.5
+  magnetismSphereRadius: 0.2
   pullForce: 10
   pullObjectSpeed: 0.2
   rotationSpeed: 5
