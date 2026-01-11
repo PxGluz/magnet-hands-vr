@@ -40,6 +40,14 @@ public class MagneticInputLogic : MonoBehaviour
         // SteamVR_Actions._default.Trajectory.onChange += EnableTrajectory;
     }
 
+    private void OnDisable()
+    {
+        SteamVR_Actions._default.NegativeL.onChange -= NegativeLogic;
+        SteamVR_Actions._default.PositiveL.onChange -= PositiveLogic;
+        SteamVR_Actions._default.NegativeR.onChange -= NegativeLogic;
+        SteamVR_Actions._default.PositiveR.onChange -= PositiveLogic;
+    }
+
     private GameObject heldLeft;
     private GameObject heldRight;
 
