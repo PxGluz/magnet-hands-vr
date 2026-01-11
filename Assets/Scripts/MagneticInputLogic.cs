@@ -171,7 +171,7 @@ public class MagneticInputLogic : MonoBehaviour
             return;
 
         RaycastHit hit;
-        if (Physics.SphereCast(source.position, magnetismSphereRadius, source.forward, out hit, magnetismRange, magnetismRaycast))
+        if (Physics.SphereCast(source.position, magnetismSphereRadius, source.forward, out hit, magnetismRange, sphereCastLayers))
         {
             if (!Helpers.isLayerInMask(hit.collider.gameObject.layer, magnetismRaycast))
                 return;
