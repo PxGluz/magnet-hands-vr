@@ -54,15 +54,23 @@
       "type": "vector2"
     },
     {
-      "name": "/actions/default/in/Positive",
+      "name": "/actions/default/in/PositiveL",
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/Negative",
+      "name": "/actions/default/in/NegativeL",
       "type": "boolean"
     },
     {
       "name": "/actions/default/in/Trajectory",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/PositiveR",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/NegativeR",
       "type": "boolean"
     },
     {
