@@ -113,19 +113,19 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean Positive
+        public virtual SteamVR_Action_Boolean PositiveL
         {
             get
             {
-                return SteamVR_Actions.default_Positive;
+                return SteamVR_Actions.default_PositiveL;
             }
         }
         
-        public virtual SteamVR_Action_Boolean Negative
+        public virtual SteamVR_Action_Boolean NegativeL
         {
             get
             {
-                return SteamVR_Actions.default_Negative;
+                return SteamVR_Actions.default_NegativeL;
             }
         }
         
@@ -134,6 +134,22 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.default_Trajectory;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean PositiveR
+        {
+            get
+            {
+                return SteamVR_Actions.default_PositiveR;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean NegativeR
+        {
+            get
+            {
+                return SteamVR_Actions.default_NegativeR;
             }
         }
         

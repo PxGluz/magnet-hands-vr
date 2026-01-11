@@ -11,6 +11,8 @@ public class MagneticInputLogic : MonoBehaviour
     [SerializeField] private LayerMask sphereCastLayers;
     [SerializeField] private LineRenderer leftHandTrajectory;
     [SerializeField] private LineRenderer rightHandTrajectory;
+    [SerializeField] private Material positiveColor;
+    [SerializeField] private Material negativeColor;
 
     [Header("Variables")]
     [SerializeField] private float offset;
@@ -31,14 +33,25 @@ public class MagneticInputLogic : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        SteamVR_Actions._default.Negative.onChange += NegativeLogic;
-        SteamVR_Actions._default.Positive.onChange += PositiveLogic;
-        SteamVR_Actions._default.Trajectory.onChange += EnableTrajectory;
+        SteamVR_Actions._default.NegativeL.onChange += NegativeLogic;
+        SteamVR_Actions._default.PositiveL.onChange += PositiveLogic;
+        SteamVR_Actions._default.NegativeR.onChange += NegativeLogic;
+        SteamVR_Actions._default.PositiveR.onChange += PositiveLogic;
+        // SteamVR_Actions._default.Trajectory.onChange += EnableTrajectory;
     }
 
     private GameObject heldLeft;
     private GameObject heldRight;
 
+    private class SourceObject
+    {
+        public Transform sourceTransform;
+        public MagnetismType magnetismType;
+        public SteamVR_Input_Sources inputSource;
+    }
+
+    SourceObject sourceObjectL = null;
+    SourceObject sourceObjectR = null;
     private void HandleMagnetism(SteamVR_Input_Sources fromSource, bool newState, MagnetismType magnetismType)
     {
         Debug.Log(fromSource + " " + newState + " " + magnetismType);
@@ -69,41 +82,18 @@ public class MagneticInputLogic : MonoBehaviour
                 return;
             }
 
-            RaycastHit hit;
-            if (Physics.SphereCast(source.position, magnetismSphereRadius, source.forward, out hit, magnetismRange, magnetismRaycast))
+            (source == leftHand ? leftHandTrajectory : rightHandTrajectory).gameObject.SetActive(true);
+            (source == leftHand ? leftHandTrajectory : rightHandTrajectory).material = magnetismType == MagnetismType.Negative ? negativeColor : positiveColor;
+            SourceObject sourceObject = new SourceObject()
             {
-                if (!Helpers.isLayerInMask(hit.collider.gameObject.layer, magnetismRaycast))
-                    return;
-                GameObject hitObject = hit.collider.gameObject;
-                MagneticObject magneticObject = hitObject.GetComponent<MagneticObject>();
-                Vector3 directionToObject = (hit.point - source.position).normalized;
-                if (magneticObject.isPullable)
-                {
-                    if (magneticObject.magneticPole != magnetismType)
-                    {
-                        Debug.Log("started pulling " + hitObject.name);
-                        if (fromSource == SteamVR_Input_Sources.LeftHand)
-                            heldLeft = hitObject;
-                        else
-                            heldRight = hitObject;
-                        Rigidbody heldObjectRB = hitObject.GetComponent<Rigidbody>();
-                        heldObjectRB.isKinematic = true;
-                        heldObjectRB.useGravity = false;
-                        hitObject.GetComponent<Collider>().enabled = false;
-                    }
-                    else
-                    {
-                        hitObject.GetComponent<Rigidbody>().velocity = directionToObject * pullForce;
-                    }
-                }
-                else
-                {
-                    if (magneticObject.magneticPole != magnetismType)
-                        rb.velocity = directionToObject * pullForce;
-                    else
-                        rb.velocity = -directionToObject * pullForce;
-                }
-            }
+                sourceTransform = source,
+                magnetismType = magnetismType,
+                inputSource = fromSource
+            };
+            if (fromSource == SteamVR_Input_Sources.LeftHand)
+                sourceObjectL = sourceObject;
+            else
+                sourceObjectR = sourceObject;
         }
         else
         {
@@ -127,6 +117,11 @@ public class MagneticInputLogic : MonoBehaviour
                 heldRight.GetComponent<Collider>().enabled = true;
                 heldRight = null;
             }
+            (fromSource == SteamVR_Input_Sources.LeftHand ? leftHandTrajectory : rightHandTrajectory).gameObject.SetActive(false);
+            if (fromSource == SteamVR_Input_Sources.LeftHand)
+                sourceObjectL = null;
+            else
+                sourceObjectR = null;
         }
     }
 
@@ -140,13 +135,13 @@ public class MagneticInputLogic : MonoBehaviour
         HandleMagnetism(fromAction.activeDevice, newState, MagnetismType.Positive);
     }
 
-    private void EnableTrajectory(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
-    {
-        if (fromAction.activeDevice == SteamVR_Input_Sources.LeftHand)
-            leftHandTrajectory.gameObject.SetActive(newState);
-        else
-            rightHandTrajectory.gameObject.SetActive(newState);
-    }
+    // private void EnableTrajectory(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
+    // {
+    //     if (fromAction.activeDevice == SteamVR_Input_Sources.LeftHand)
+    //         leftHandTrajectory.gameObject.SetActive(newState);
+    //     else
+    //         rightHandTrajectory.gameObject.SetActive(newState);
+    // }
 
 
     private Vector3 currentLeft;
@@ -165,9 +160,63 @@ public class MagneticInputLogic : MonoBehaviour
         }
     }
 
+    private void HandleHoldingLogic(SourceObject sourceObject)
+    {   
+        if (sourceObject == null)
+            return;
+        Transform source = sourceObject.sourceTransform;
+        MagnetismType magnetismType = sourceObject.magnetismType;
+        SteamVR_Input_Sources fromSource = sourceObject.inputSource;
+        if ((fromSource == SteamVR_Input_Sources.LeftHand && heldLeft) || (fromSource == SteamVR_Input_Sources.RightHand && heldRight))
+            return;
+
+        RaycastHit hit;
+        if (Physics.SphereCast(source.position, magnetismSphereRadius, source.forward, out hit, magnetismRange, magnetismRaycast))
+        {
+            if (!Helpers.isLayerInMask(hit.collider.gameObject.layer, magnetismRaycast))
+                return;
+            GameObject hitObject = hit.collider.gameObject;
+            MagneticObject magneticObject = hitObject.GetComponent<MagneticObject>();
+            Vector3 directionToObject = (hit.point - source.position).normalized;
+            if (magneticObject.isPullable)
+            {
+                if (magneticObject.magneticPole != magnetismType)
+                {
+                    Debug.Log("started pulling " + hitObject.name);
+                    if (fromSource == SteamVR_Input_Sources.LeftHand)
+                        heldLeft = hitObject;
+                    else
+                        heldRight = hitObject;
+                    Rigidbody heldObjectRB = hitObject.GetComponent<Rigidbody>();
+                    heldObjectRB.isKinematic = true;
+                    heldObjectRB.useGravity = false;
+                    hitObject.GetComponent<Collider>().enabled = false;
+                }
+                else
+                {
+                    hitObject.GetComponent<Rigidbody>().velocity = directionToObject * pullForce;
+                }
+            }
+            else
+            {
+                if (magneticObject.magneticPole != magnetismType)
+                    rb.velocity = directionToObject * pullForce;
+                else
+                    rb.velocity = -directionToObject * pullForce;
+            }
+            (source == leftHand ? leftHandTrajectory : rightHandTrajectory).gameObject.SetActive(false);
+            if (fromSource == SteamVR_Input_Sources.LeftHand)
+                sourceObjectL = null;
+            else
+                sourceObjectR = null;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         MoveHeldObjectsToPoints();
+        HandleHoldingLogic(sourceObjectL);
+        HandleHoldingLogic(sourceObjectR);
     }
 }

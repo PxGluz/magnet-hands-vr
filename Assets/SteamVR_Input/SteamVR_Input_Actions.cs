@@ -41,11 +41,15 @@ namespace Valve.VR
         
         private static SteamVR_Action_Vector2 p_default_Move;
         
-        private static SteamVR_Action_Boolean p_default_Positive;
+        private static SteamVR_Action_Boolean p_default_PositiveL;
         
-        private static SteamVR_Action_Boolean p_default_Negative;
+        private static SteamVR_Action_Boolean p_default_NegativeL;
         
         private static SteamVR_Action_Boolean p_default_Trajectory;
+        
+        private static SteamVR_Action_Boolean p_default_PositiveR;
+        
+        private static SteamVR_Action_Boolean p_default_NegativeR;
         
         private static SteamVR_Action_Vibration p_default_Haptic;
         
@@ -159,19 +163,19 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Boolean default_Positive
+        public static SteamVR_Action_Boolean default_PositiveL
         {
             get
             {
-                return SteamVR_Actions.p_default_Positive.GetCopy<SteamVR_Action_Boolean>();
+                return SteamVR_Actions.p_default_PositiveL.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
-        public static SteamVR_Action_Boolean default_Negative
+        public static SteamVR_Action_Boolean default_NegativeL
         {
             get
             {
-                return SteamVR_Actions.p_default_Negative.GetCopy<SteamVR_Action_Boolean>();
+                return SteamVR_Actions.p_default_NegativeL.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -180,6 +184,22 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.p_default_Trajectory.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_PositiveR
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_PositiveR.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_NegativeR
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_NegativeR.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -262,9 +282,11 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_Move,
-                    SteamVR_Actions.default_Positive,
-                    SteamVR_Actions.default_Negative,
+                    SteamVR_Actions.default_PositiveL,
+                    SteamVR_Actions.default_NegativeL,
                     SteamVR_Actions.default_Trajectory,
+                    SteamVR_Actions.default_PositiveR,
+                    SteamVR_Actions.default_NegativeR,
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
@@ -286,9 +308,11 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_Move,
-                    SteamVR_Actions.default_Positive,
-                    SteamVR_Actions.default_Negative,
+                    SteamVR_Actions.default_PositiveL,
+                    SteamVR_Actions.default_NegativeL,
                     SteamVR_Actions.default_Trajectory,
+                    SteamVR_Actions.default_PositiveR,
+                    SteamVR_Actions.default_NegativeR,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -311,9 +335,11 @@ namespace Valve.VR
                     SteamVR_Actions.default_HeadsetOnHead,
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
-                    SteamVR_Actions.default_Positive,
-                    SteamVR_Actions.default_Negative,
+                    SteamVR_Actions.default_PositiveL,
+                    SteamVR_Actions.default_NegativeL,
                     SteamVR_Actions.default_Trajectory,
+                    SteamVR_Actions.default_PositiveR,
+                    SteamVR_Actions.default_NegativeR,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset};
@@ -338,9 +364,11 @@ namespace Valve.VR
                     SteamVR_Actions.default_SnapTurnLeft,
                     SteamVR_Actions.default_SnapTurnRight,
                     SteamVR_Actions.default_Move,
-                    SteamVR_Actions.default_Positive,
-                    SteamVR_Actions.default_Negative,
+                    SteamVR_Actions.default_PositiveL,
+                    SteamVR_Actions.default_NegativeL,
                     SteamVR_Actions.default_Trajectory,
+                    SteamVR_Actions.default_PositiveR,
+                    SteamVR_Actions.default_NegativeR,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -363,9 +391,11 @@ namespace Valve.VR
             SteamVR_Actions.p_default_SnapTurnLeft = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SnapTurnLeft")));
             SteamVR_Actions.p_default_SnapTurnRight = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SnapTurnRight")));
             SteamVR_Actions.p_default_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/default/in/Move")));
-            SteamVR_Actions.p_default_Positive = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/Positive")));
-            SteamVR_Actions.p_default_Negative = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/Negative")));
+            SteamVR_Actions.p_default_PositiveL = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PositiveL")));
+            SteamVR_Actions.p_default_NegativeL = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/NegativeL")));
             SteamVR_Actions.p_default_Trajectory = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/Trajectory")));
+            SteamVR_Actions.p_default_PositiveR = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/PositiveR")));
+            SteamVR_Actions.p_default_NegativeR = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/NegativeR")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
             SteamVR_Actions.p_platformer_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/platformer/in/Move")));
             SteamVR_Actions.p_platformer_Jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/platformer/in/Jump")));
