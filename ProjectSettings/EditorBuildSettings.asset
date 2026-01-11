@@ -13,16 +13,13 @@ EditorBuildSettings:
     guid: b986c03583b2b4847accadd147543aef
   - enabled: 1
     path: Assets/Scenes/Level0.unity
+    guid: 5979475bda8956d40be780c5dd2db44d
+  - enabled: 1
+    path: Assets/Scenes/VerticalLevel.unity
+    guid: 4d4a5311ac993ec40af5837b2d8b2d3f
+  - enabled: 1
+    path: Assets/Scenes/PuzzleLevel.unity
     guid: d7e83e81b5f155741a2fc3c410d44ad5
-  - enabled: 1
-    path: Assets/Scenes/PxGluz.unity
-    guid: 413a7ff54ff2e3c4ca6ff4530fb9210a
-  - enabled: 1
-    path: Assets/Scenes/MeHigh.unity
-    guid: baa4c2a5a29df604781c19f9878acfbf
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 9f7e804f4f359de449ce8aa537495b76, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 31d82ec1ed67e0f4599277d133e93c02, type: 2}

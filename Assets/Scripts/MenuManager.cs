@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
             wall.transform.localScale += new Vector3(0, 0, 4 * totalRate);
 
         // Spawn level selectors
-        for (int level = 0; level < levelCount + 1; level += 2)
+        for (int level = 0; level < levelCount; level += 2)
         {
             // Left level
             GameObject levelSelector = Instantiate(levelSelectorPrefab, new Vector3(backWallInitial.x - sidePlacementFactor, 0f, backWallInitial.z + extendingRate * level), Quaternion.LookRotation(Vector3.left, Vector3.up));
