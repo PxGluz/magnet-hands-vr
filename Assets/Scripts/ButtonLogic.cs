@@ -49,6 +49,7 @@ public class ButtonLogic : MonoBehaviour
             onPress.Invoke();
             hasBeenPressed = true;
             StartCoroutine(PressAnimation());
+            AudioManager.instance.PlaySFXAtPosition("click", gameObject.transform.position);
         }
     }
 

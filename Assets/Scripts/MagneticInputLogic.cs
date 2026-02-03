@@ -65,10 +65,13 @@ public class MagneticInputLogic : MonoBehaviour
         Debug.Log(fromSource + " " + newState + " " + magnetismType);
         if (newState)
         {
+            AudioManager.instance.PlaySFX("magnet");
+
             Transform source = fromSource == SteamVR_Input_Sources.LeftHand ? leftHand : rightHand;
 
             if (fromSource == SteamVR_Input_Sources.LeftHand && heldLeft)
             {
+                AudioManager.instance.PlaySFX("whoosh");
                 Rigidbody heldObjectRB = heldLeft.GetComponent<Rigidbody>();
                 heldObjectRB.isKinematic = false;
                 heldObjectRB.useGravity = true;
@@ -80,6 +83,7 @@ public class MagneticInputLogic : MonoBehaviour
             }
             if (fromSource == SteamVR_Input_Sources.RightHand && heldRight)
             {
+                AudioManager.instance.PlaySFX("whoosh");
                 Rigidbody heldObjectRB = heldRight.GetComponent<Rigidbody>();
                 heldObjectRB.isKinematic = false;
                 heldObjectRB.useGravity = true;
@@ -190,6 +194,7 @@ public class MagneticInputLogic : MonoBehaviour
             {
                 if (magneticObject.magneticPole != magnetismType)
                 {
+                    AudioManager.instance.PlaySFX("whoosh");
                     Debug.Log("started pulling " + hitObject.name);
                     if (fromSource == SteamVR_Input_Sources.LeftHand)
                         heldLeft = hitObject;

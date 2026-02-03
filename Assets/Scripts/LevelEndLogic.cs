@@ -7,4 +7,9 @@ public class LevelEndLogic : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             GameManager.instance.LevelCompleted();
     }
+
+    private void Start()
+    {
+        AudioManager.instance.PlayLoopAtPosition("forcefield", gameObject.transform.position);
+    }
 }

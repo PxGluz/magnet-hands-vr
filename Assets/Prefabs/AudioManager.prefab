@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &219857571467515336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3960727932786463205}
+  - component: {fileID: 461817249249140551}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3960727932786463205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219857571467515336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461817249249140551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219857571467515336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b772b0f87463b984babf65252745e70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSounds: []
+  sfxSounds:
+  - id: magnet
+    clips:
+    - {fileID: 8300000, guid: caba934158492b641bb6c3f6e380b3b9, type: 3}
+    - {fileID: 8300000, guid: c3220471f16ba144fa2340306c1c2269, type: 3}
+    - {fileID: 8300000, guid: 8d06dfde2c68d304c9fecaa134bbd9de, type: 3}
+    - {fileID: 8300000, guid: 2e1dc3f7cdaddf14bb97bb6d07e2f780, type: 3}
+    - {fileID: 8300000, guid: fe2df5641931d754b8f60435c0f9bfe1, type: 3}
+    - {fileID: 8300000, guid: 2b3c5e247f084144b91213da20ab00fb, type: 3}
+    - {fileID: 8300000, guid: 8f2e0b333a24706409587e87289645a4, type: 3}
+    - {fileID: 8300000, guid: 69f31e162ef8ba14bae5baad8bc861db, type: 3}
+    - {fileID: 8300000, guid: 809d4b9414dcdc04a8f1b4f8c6187d78, type: 3}
+    - {fileID: 8300000, guid: 06f253d11295da441ab575553d29d69a, type: 3}
+    volume: 0.5
+    pitch: 0.5
+    loop: 0
+    avoidRepeat: 1
+    source: {fileID: 0}
+  - id: door
+    clips:
+    - {fileID: 8300000, guid: 910eca38e659a8746ada88f619eedd98, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    avoidRepeat: 0
+    source: {fileID: 0}
+  - id: click
+    clips:
+    - {fileID: 8300000, guid: 47ddbf2edceb4744381868513c7dcff8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    avoidRepeat: 0
+    source: {fileID: 0}
+  - id: forcefield
+    clips:
+    - {fileID: 8300000, guid: 15aace24fdf72564c98eb67893dd5a13, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    avoidRepeat: 0
+    source: {fileID: 0}
+  - id: whoosh
+    clips:
+    - {fileID: 8300000, guid: 6a4ca354bf5ea5b4b822dc12b8a36105, type: 3}
+    - {fileID: 8300000, guid: 1e2615137ea8d004280dd391e6776c7d, type: 3}
+    - {fileID: 8300000, guid: 62082b9062552b94982570237e71a1bd, type: 3}
+    - {fileID: 8300000, guid: 784f008ff74975e469c2e6ec0332eef7, type: 3}
+    - {fileID: 8300000, guid: 0ac8a870bf1f2ff4bb0b69cd2c65bc6c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    avoidRepeat: 1
+    source: {fileID: 0}
+  masterVolume: 1
+  musicVolume: 1
+  sfxVolume: 1

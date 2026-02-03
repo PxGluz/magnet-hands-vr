@@ -70,6 +70,7 @@ public class ButtonActionedDoor : MonoBehaviour
         {
             isOpened = true;
             doorText.gameObject.SetActive(false);
+            AudioManager.instance.PlaySFXAtPosition("door", gameObject.transform.position);
         }
     }
 }
