@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -13,12 +11,16 @@ public class MenuManager : MonoBehaviour
     [Header("Config")]
     public float extendingRate;
     public float sidePlacementFactor;
+    public GameObject playerPrefab;
 
     private Vector3 backWallInitial;
 
     private void Awake()
     {
+        if (PlayerContainer.Instance == null)
+            Instantiate(playerPrefab, Vector3.up * 1.05f, Quaternion.identity);
         backWallInitial = backWall.transform.position;
+        HighscoreManager.LoadHighscores();
     }
 
     void Start()
@@ -41,8 +43,7 @@ public class MenuManager : MonoBehaviour
             GameObject levelSelector = Instantiate(levelSelectorPrefab, new Vector3(backWallInitial.x - sidePlacementFactor, 0f, backWallInitial.z + extendingRate * level), Quaternion.LookRotation(Vector3.left, Vector3.up));
 
             levelSelector.GetComponent<LevelSelect>().levelIndex = level + 1;
-
-            levelSelector.GetComponentInChildren<TMP_Text>().text = "Level " + (level + 1);
+            levelSelector.GetComponent<LevelSelect>().InitValues();
 
             // Right level
             if (level + 1 < levelCount)
@@ -50,8 +51,7 @@ public class MenuManager : MonoBehaviour
                 levelSelector = Instantiate(levelSelectorPrefab, new Vector3(backWallInitial.x + sidePlacementFactor, 0f, backWallInitial.z + extendingRate * level), Quaternion.LookRotation(Vector3.right, Vector3.up));
 
                 levelSelector.GetComponent<LevelSelect>().levelIndex = level + 2;
-
-                levelSelector.GetComponentInChildren<TMP_Text>().text = "Level " + (level + 2);
+                levelSelector.GetComponent<LevelSelect>().InitValues();
             }
         }
     }

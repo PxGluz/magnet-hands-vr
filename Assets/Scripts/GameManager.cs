@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted()
     {
         PlayerContainer.Instance.timerLogic.StopTimer();
+        HighscoreManager.WriteHighscore(SceneManager.GetActiveScene().buildIndex, PlayerContainer.Instance.timerLogic.GetTimer());
         SetPlayerCheckpoint(PlayerContainer.Instance.transform.position);
         Debug.Log("Level Completed!");
     }
@@ -54,8 +55,8 @@ public class GameManager : MonoBehaviour
 
     private void BackToMenu(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
     {
-        Destroy(PlayerContainer.Instance.gameObject);
-
+        PlayerContainer.Instance.transform.position = Vector3.zero;
+        PlayerContainer.Instance.timerLogic.ClearTimerObjects();
         SceneManager.LoadScene(0);
     }
 }

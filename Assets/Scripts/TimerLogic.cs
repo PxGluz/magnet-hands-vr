@@ -15,9 +15,19 @@ public class TimerLogic : MonoBehaviour
         timerObjects.Add(timerObject);
     }
 
-    private void ResetTimer()
+    public void ClearTimerObjects()
+    {
+        timerObjects.Clear();
+    }
+
+    public void ResetTimer()
     {
         timer = 0f;
+    }
+
+    public float GetTimer()
+    {
+        return timer;
     }
 
     public void StartTimer()
