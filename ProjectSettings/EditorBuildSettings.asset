@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AnotherVerticalLevel.unity
     guid: 94c0f1448250abd4298555e49a70dc32
+  - enabled: 1
+    path: Assets/Scenes/OpenLevel.unity
+    guid: 24e3b9504e4b1744d859b36b6287447a
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 9f7e804f4f359de449ce8aa537495b76, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 31d82ec1ed67e0f4599277d133e93c02, type: 2}
